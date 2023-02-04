@@ -6,6 +6,9 @@ public class ArrayList implements CapstoneList {
 	private int[] vList;
 	private int count;
 
+	/**
+	 * desc
+	 */
 	public ArrayList() {
 		vList = new int[8];
 		count = 0;

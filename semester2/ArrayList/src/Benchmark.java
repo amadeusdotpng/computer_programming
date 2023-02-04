@@ -13,13 +13,17 @@ public class Benchmark {
 
 		System.out.printf("%-10s | %14s | %14s | %14s | %14s\n", "", ".add()", "", ".pop()", "");
 		System.out.printf("%-10s | %14s | %14s | %14s | %14s\n", "N", "Implementation", "Java", "Implementation", "Java");
-		for(int i = 0; i < 20; i++) {
+		for(int i = 0; i < 25; i++) {
 			java.util.ArrayList javaList = new java.util.ArrayList<Integer>();
-			ArrayList implementList = new ArrayList();
-
 			javaAddMilli = javaAdd(javaList, n)/MILLI2NANO;
+
+			javaList = new java.util.ArrayList<Integer>();
 			javaPopMilli = javaPop(javaList, n)/MILLI2NANO;
+
+			ArrayList implementList = new ArrayList();
 			implementAddMilli = implementAdd(implementList, n)/MILLI2NANO;
+
+			implementList = new ArrayList();
 			implementPopMilli = implementPop(implementList, n)/MILLI2NANO;
 
 			System.out.printf("%-10d | %14f | %14f | %14f | %14f\n", n, implementAddMilli, javaAddMilli, implementPopMilli, javaPopMilli);
@@ -32,7 +36,6 @@ public class Benchmark {
 		long start = System.nanoTime();
 		for(int i = 0; i < n; i++) list.add(i);
 		long rTime = System.nanoTime()-start;
-		list = new ArrayList();
 		return rTime;
 	}
 
@@ -41,7 +44,6 @@ public class Benchmark {
 		for(int i = 0; i < n; i++) 
 			list.add(i);
 		long rTime = System.nanoTime()-start;
-		list = new java.util.ArrayList<Integer>();
 		return rTime;
 	}
 
@@ -53,7 +55,6 @@ public class Benchmark {
 		for(int i = 0; i < n; i++) 
 			list.pop(0);
 		long rTime = System.nanoTime()-start;
-		list = new ArrayList();
 		return rTime;
 	}
 
@@ -62,7 +63,6 @@ public class Benchmark {
 		long start = System.nanoTime();
 		for(int i = 0; i < n; i++) list.remove(0);
 		long rTime = System.nanoTime()-start;
-		list = new java.util.ArrayList<Integer>();
 		return rTime;
 	}
 }
