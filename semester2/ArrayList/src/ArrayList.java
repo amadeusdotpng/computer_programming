@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class ArrayList implements CapstoneList {
 	/* Instance Variables */
@@ -85,11 +86,19 @@ public class ArrayList implements CapstoneList {
 	}
 
 	public int pop(int index) {
-		if(index < 0 || index >= count) throw new IndexOutOfBoundsException();
+/*		if(index < 0 || index >= count) throw new IndexOutOfBoundsException();
 		int r = vList[index];
 		for(int i = index; i < count-1; i++) {
 			vList[i] = vList[i+1];
 		}
+*/
+		/* Actual Java Implementation */
+	
+		int r = vList[index];
+		int move = count - index - 1;
+		if(move > 0)
+			System.arraycopy(vList, index + 1, vList, index, move);
+
 		count--;
 		return r;
 	}
