@@ -1,8 +1,9 @@
 public class Benchmark {
 	public static void main(String[] args) {
 		final double MILLI2NANO = 1E6;
-		final double SEC2MILLI = 1E3; 
 
+		java.util.ArrayList<Integer> javaList;
+		ArrayList implementList;
 
 		/* .add() and .pop() Benchmark */
 		double implementAddMilli = 0; 
@@ -14,13 +15,13 @@ public class Benchmark {
 		System.out.printf("%-10s | %14s | %14s | %14s | %14s\n", "", ".add()", "", ".pop()", "");
 		System.out.printf("%-10s | %14s | %14s | %14s | %14s\n", "N", "Implementation", "Java", "Implementation", "Java");
 		for(int i = 0; i < 25; i++) {
-			java.util.ArrayList javaList = new java.util.ArrayList<Integer>();
+			javaList = new java.util.ArrayList<Integer>();
 			javaAddMilli = javaAdd(javaList, n)/MILLI2NANO;
 
 			javaList = new java.util.ArrayList<Integer>();
 			javaPopMilli = javaPop(javaList, n)/MILLI2NANO;
 
-			ArrayList implementList = new ArrayList();
+			implementList = new ArrayList();
 			implementAddMilli = implementAdd(implementList, n)/MILLI2NANO;
 
 			implementList = new ArrayList();
@@ -39,7 +40,7 @@ public class Benchmark {
 		return rTime;
 	}
 
-	public static long javaAdd(java.util.ArrayList list, int n) {
+	public static long javaAdd(java.util.ArrayList<Integer> list, int n) {
 		long start = System.nanoTime();
 		for(int i = 0; i < n; i++) 
 			list.add(i);
@@ -58,7 +59,7 @@ public class Benchmark {
 		return rTime;
 	}
 
-	public static long javaPop(java.util.ArrayList list, int n) {
+	public static long javaPop(java.util.ArrayList<Integer> list, int n) {
 		for(int i = 0; i<n; i++) list.add(i);
 		long start = System.nanoTime();
 		for(int i = 0; i < n; i++) list.remove(0);
