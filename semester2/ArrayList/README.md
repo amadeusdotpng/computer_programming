@@ -14,3 +14,6 @@ Spreadsheet and graphs of benchmarks of the implementation and Java's implementa
 
 ## `bin` Folder
 `.class` files of the files in the `src` folder.  
+
+## `ArrayList_Presentation.pdf`
+Presentation over the project.
