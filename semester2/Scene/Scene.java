@@ -110,12 +110,12 @@ class MyPanel extends JPanel implements MouseMotionListener {
 
 	private void setImages() {
 		try {
-			ocean = ImageIO.read(new File("ocean.png"));
-			island = ImageIO.read(new File("islandSmall.png"));
-			sun = ImageIO.read(new File("sun.png"));
-			ship = ImageIO.read(new File("ship.png"));
-			cloud0 = ImageIO.read(new File("cloud0.png"));
-			cloud1 = ImageIO.read(new File("cloud1.png"));
+			ocean = ImageIO.read(new File("./pics/ocean.png"));
+			island = ImageIO.read(new File("./pics/islandSmall.png"));
+			sun = ImageIO.read(new File("./pics/sun.png"));
+			ship = ImageIO.read(new File("./pics/ship.png"));
+			cloud0 = ImageIO.read(new File("./pics/cloud0.png"));
+			cloud1 = ImageIO.read(new File("./pics/cloud1.png"));
 		} catch(IOException e) {
 			System.out.println(e);
 		}
