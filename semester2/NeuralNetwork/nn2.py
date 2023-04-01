@@ -16,7 +16,7 @@ scalar = StandardScaler()
 scalar.fit(X)
 X=scalar.transform(X)
 
-clf = MLPClassifier(hidden_layer_sizes=[100,100,100], max_iter=10000000)
+clf = MLPClassifier(hidden_layer_sizes=[100,100,100], max_iter=10000000, verbose=True)
 clf.fit(X,y)
 import numpy as np
 import cv2
@@ -37,3 +37,5 @@ for a in range(200):
             actual[a,b]=255
         if i+j>k and i*i+j*j>k*k:
             actual[a,b]=128
+
+print('done')
