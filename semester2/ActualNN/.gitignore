@@ -1,0 +1,8 @@
+*
+
+!data/
+!data/*
+!README.txt
+!predict.py
+!protoNN.py
+!.gitignore
