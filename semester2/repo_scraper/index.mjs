@@ -11,7 +11,9 @@ let language = "python";
 let fetched = await octokit.request("GET /search/repositories?q=language:{lang}&sort=stars&order=desc", {lang: language});
 let repoList = fetched.data.items;
 
-for(let i = 20; i < 30; i++) {
+let from = 0
+let to = 10
+for(let i = from; i < to; i++) {
 	let fetchedFiles = await octokit.request("https://api.github.com/search/code?q=%20+in%3Afile+language%3A{lang}+repo%3A{repo}", {lang: language, repo: repoList[i].full_name});
 	let filesList = fetchedFiles.data.items;
 	console.log(repoList[i].full_name)
