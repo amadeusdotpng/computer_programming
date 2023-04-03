@@ -20,8 +20,12 @@ You can find how to make a Personal Access Token
 After you have your Github Token, you can store it in a `.env` file as `TOKEN=<your-token-here>`.  
 
 
-You can now edit `index.mjs` to scrape repos by language.
-Change the `language` variable to whichever language you wish, such as `java` or `cpp`.  
+You can now edit `index.mjs` to scrape repos by language.  
+Change the `language` variable to whichever language you wish.
+```javascript
+// scrapes repos containing c++ files and downloads all its c++ files
+let language = "cpp"
+```
 
 You can change the range of repos scraped by changing the variables `from` and `to`.
 ```javascript
@@ -40,7 +44,7 @@ __Please make sure that you have this directory structure created before running
 ```
 
 Then run the following commands
-```
+```console
 # scrapes repos
 node index.mjs
 
