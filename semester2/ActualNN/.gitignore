@@ -6,3 +6,5 @@
 !predict.py
 !protoNN.py
 !.gitignore
+!keywords.txt
+!keywords_labeled.txt
