@@ -1,0 +1,25 @@
+LinkedList:
+x	__add__
+x	__delitem__
+x	__getitem__
+x	__len__
+x	__setitem__
+x	__str__
+x	append
+x	clear
+x	count
+x	extend
+x	index
+x	insert
+x	pop
+x	remove
+x	reverse
+	sort
+
+
+
+docstring example:
+
+def func(n):
+	'''Takes in a number n, returns the square of n'''
+	return n*n
