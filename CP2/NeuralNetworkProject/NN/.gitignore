@@ -1,0 +1,14 @@
+*
+
+!data/
+!data/*
+!README.txt
+!predict.py
+!protoNN.py
+!confusion.py
+!test.py
+!.gitignore
+!keywords.txt
+!keywords_labeled.txt
+
+

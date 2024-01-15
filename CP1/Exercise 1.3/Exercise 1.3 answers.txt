@@ -1,0 +1,77 @@
+1. 
+HelloWorld.java:1: error: '{' expected
+public class HelloWorld
+                       ^
+
+This error message is very helpful because it tells you what and where it has gone wrong.
+
+
+2.
+HelloWorld.java:9: error: reached end of file while parsing
+}
+ ^
+
+This error is not as helpful because people might not understand what it means. It's also misleading because the I removed the closing curly brackets from the main method while it tells us that the error is in line 9.
+
+
+3.
+Error: Main method not found in class HelloWorld, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+This error is somewhat helpful because it tells the person what Java wants, but a person may not understand what Java means by a main method. It can also be somewhat misleading because this error only occurs when you run the program and not when you compile it.
+
+
+4.
+Error: Main method is not static in class HelloWorld, please define the main method as:
+   public static void main(String[] args)
+
+This error is helpful because it tells the person what Java wants which is that the main method needs to be static and they also show how to do it. But it can also be misleading because this error also only occurs during runtime and not during compilation.
+
+
+5.
+Error: Main method not found in class HelloWorld, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+This error is helpful because it tells the person what Java wants, but it's less helpful in this context because the user may also be confused because they've defined a main method already, but they may not realize the main method must be public.
+
+
+6.
+HelloWorld.java:5: error: cannot find symbol
+        out.println("Hello, World!");
+        ^
+  symbol:   variable out
+  location: class HelloWorld
+
+This error is somewhat helpful because it tells the user where the error occurs. But it's not super helpful in telling the user what the error is as they may not understand what "cannot find symbol" means.
+
+
+7. 
+HelloWorld.java:5: error: cannot find symbol
+        System.out.Println("Hello, World!");
+                  ^
+  symbol:   method Println(String)
+  location: variable out of type PrintStream
+
+This error is not that helpful because it doesn't really tell us what is wrong. The "location: variable out of type PrintStream" is also very confusing, though it does tell us where it occurs with the line number and the arrow. The user may also not know that capitalization matters.
+
+
+8.
+There is no error, but there is kind of a logic error as the user may not expect Java to continue printing on the same line after printing something else.
+
+
+9.
+HelloWorld.java:5: error: ')' expected
+        System.out.print("Hello, World!";
+                                        ^
+
+This error is super helpful because it tells you where the error occurs with the line number and arrow. It also tells you how to fix it by saying that it expects a parenthesis in the arrow.
+
+
+10.
+HelloWorld.java:5: error: ';' expected
+        System.out.print("Hello, World!"));
+                                         ^
+
+This error is helpful but a little confusing since it does tell us where and what is wrong. But the user may be confused because there already is a semicolon at the end.
