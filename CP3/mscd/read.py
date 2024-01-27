@@ -50,6 +50,7 @@ def find_spots(A):
 
     pool = mp.Pool(processes=24)
     t0 = time.time()
+
     N = [(cost, coord, leftover) for V, cost, coord, leftover in pool.map(partial(get_cost, A), K) if V and leftover >= 0]
     t = time.time()
     print(f'finished getting costs in: {int(t-t0)} seconds')
@@ -78,7 +79,6 @@ def find_spots(A):
     caves = []
     for cost, coord, leftover in valids:
         C = make_burrow(A[::], coord, leftover)
-        print(abs(A-C).sum(), cost)
         caves.append(C)
         saveCave(C, f'burrowcity_{coord[2]}_{coord[1]}_{coord[0]}_{int(cost)}_orlinab24.cave')
 
