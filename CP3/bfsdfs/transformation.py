@@ -36,8 +36,10 @@ def bfs(root_word: str, goal_word: str, dictionary: Set):
     solutions = set()
 
     max_depth = None
+    pop_count = 0
     while Q:
         chain = Q.popleft()
+        pop_count += 1
         depth, last_word = len(chain)-1, chain[-1]
 
         if last_word == goal_word:
@@ -58,7 +60,7 @@ def bfs(root_word: str, goal_word: str, dictionary: Set):
             visited[next_word] = depth+1
             Q.append(new_chain)
 
-    return solutions, max_depth
+    return solutions, max_depth, pop_count
 
 
 if __name__ == '__main__':
@@ -71,6 +73,7 @@ if __name__ == '__main__':
         start = sys.argv[1].upper()
         end = sys.argv[2].upper()
 
-        paths, length= bfs(start, end, words)
+        paths, length, pop_count = bfs(start, end, words)
+        print(f'number of pop operations: {pop_count}')
         print(f'number of transformations: {length}')
         print('\n'.join(' -> '.join(t) for t in paths))
