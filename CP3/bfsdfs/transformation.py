@@ -1,5 +1,6 @@
 from collections import deque
 from typing import Set
+import sys
 
 def get_next_words(word: str, dictionary: Set):
     word = [s for s in word]
@@ -29,9 +30,9 @@ def get_next_words(word: str, dictionary: Set):
 
     return set(w for w in word_set if w in dictionary)
 
-def bfs(root: str, B: str, dictionary: Set):
-    Q = deque([tuple([root])])
-    visited = {root: 0}
+def bfs(root_word: str, goal_word: str, dictionary: Set):
+    Q = deque([tuple([root_word])])
+    visited = {root_word: 0}
     solutions = set()
 
     max_depth = None
@@ -39,7 +40,7 @@ def bfs(root: str, B: str, dictionary: Set):
         chain = Q.popleft()
         depth, last_word = len(chain)-1, chain[-1]
 
-        if last_word == B:
+        if last_word == goal_word:
             solutions.add(chain)
             if not max_depth:
                 max_depth = depth
@@ -57,14 +58,19 @@ def bfs(root: str, B: str, dictionary: Set):
             visited[next_word] = depth+1
             Q.append(new_chain)
 
-    return solutions
+    return solutions, max_depth
 
 
 if __name__ == '__main__':
-    words = set(W.strip().upper() for W in open('20k.txt'))
+    if len(sys.argv) != 3:
+        print('please include the starting and ending words in the arguments')
 
-    start = 'FOX'
-    end = 'HOUND'
+    else:
+        words = set(W.strip().upper() for W in open('20k.txt'))
 
-    paths = bfs(start, end, words)
-    print('\n'.join(' -> '.join(t) for t in paths))
+        start = sys.argv[1].upper()
+        end = sys.argv[2].upper()
+
+        paths, length= bfs(start, end, words)
+        print(f'number of transformations: {length}')
+        print('\n'.join(' -> '.join(t) for t in paths))
