@@ -1,5 +1,7 @@
 from collections import deque
 from typing import List, Set, Tuple
+import sys
+import time
 
 
 def get_edges(coord: Tuple):
@@ -12,7 +14,9 @@ def dfs(board: List, dictionary: Set):
     Q = deque([tuple([(r,c)]) for r in range(len(board)) for c in range(len(board[r]))])
     found_words = {}
 
+    Q_maxsize = 0
     while Q:
+        Q_maxsize = max(Q_maxsize, len(Q))
         chain = Q.pop()
 
         last_coord = chain[-1]
@@ -37,22 +41,29 @@ def dfs(board: List, dictionary: Set):
             
             Q.append(new_chain)
 
-    return found_words
+    return found_words, Q_maxsize
         
 
 if __name__ == '__main__':
     words = set(w.strip().upper() for w in open('20k.txt'))
-    board = [''.join(line.split()).upper() for line in open('boggle.in')]
+    board = [''.join(line.split()).upper() for line in open(sys.argv[1])]
 
-    found_words = dfs(board, words)
+    t0 = time.time()
+    found_words, deque_size = dfs(board, words)
+    t = time.time() - t0
     longest_path = set(max(found_words.values(), key=lambda w: len(w)))
 
     print('longest path on the board')
-    print('\n'.join(' '.join('.' if (r,c) not in longest_path else board[r][c] 
+    print('\n\n'.join('   '.join('.' if (r,c) not in longest_path else board[r][c] 
               for c in range(len(board[r]))) 
               for r in range(len(board)))
     )
 
+    '''
+    print(f'board size: {len(board)}')
+    print(f'time taken: {t}')
+    print(f'max deque size: {deque_size}')
+    '''
     print(f'word count: {len(found_words)}')
     print(f'longest word: {max(found_words.keys(), key=lambda w: len(w))}')
     print(f'longest word path: {longest_path}')
