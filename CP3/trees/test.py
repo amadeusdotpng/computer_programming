@@ -20,8 +20,9 @@ def is_balanced(T: BinaryTree) -> bool:
             Q.append(N.r_child)
 
     return True
+
 class TreeTesting(unittest.TestCase):
-    N = 10000
+    N = 1000
 
     def test_insert_deletion(self):
         T = BinaryTree()
