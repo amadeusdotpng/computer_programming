@@ -246,5 +246,7 @@ class BinaryTree:
         else:
             raise Exception("Empty Tree")
 
+        self.height = self.root.height if self.root else 0
+
     def __str__(self):
         return str(self.root)
