@@ -103,7 +103,7 @@ func main() {
 }
 
 func getFactors(n string) string {
-    step := big.NewInt(500_000_000)
+    step := big.NewInt(250_000_000)
     startRange := big.NewInt(0)
     responseChan := make(chan ResponseInfo)
     ctx, cancel := context.WithCancel(context.Background())
