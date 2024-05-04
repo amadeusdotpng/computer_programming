@@ -14,7 +14,7 @@ import (
 )
 
 const (
-    SERVER_PORT = "6000"
+    SERVER_PORT = "58008"
     SERVER_TYPE = "tcp"
 )
 
@@ -55,7 +55,6 @@ func init() {
         return strings.Split(strings.ReplaceAll(strings.TrimSpace(input), "\r\n", "\n"), "\n")
     }()
 
-
     SERVERS = func() []string {
         input_bytes, err := os.ReadFile(*IPFilePath)
         if err != nil {
@@ -66,6 +65,15 @@ func init() {
         input := string(input_bytes)
         return strings.Split(strings.ReplaceAll(strings.TrimSpace(input), "\r\n", "\n"), "\n")
     }()
+
+    // Set log stuff
+    logfile, err := os.OpenFile("server.log", os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0644)
+    if err != nil {
+        fmt.Println(err.Error())
+        os.Exit(1)
+    }
+    log.SetOutput(logfile)
+    log.SetFlags(log.LstdFlags | log.Lshortfile)
 }
 
 func allDigits(s string) bool {
@@ -203,7 +211,7 @@ func testRange(data FactoringInfo, responseChan chan<- ResponseInfo, wg *sync.Wa
         }
         select {
         case <-ctx.Done():
-            log.Printf("KILL_SIGN: %s -> [killing routine on %s on port %s since factor has been found]\n", factorInfo, data.IP, SERVER_PORT)
+            log.Printf("KILL_SIGN: %s -> [killing goroutine for %s on port %s since factor has been found]\n", factorInfo, data.IP, SERVER_PORT)
             return false
         default:
             return true
